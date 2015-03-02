@@ -1,4 +1,8 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+@author: brett
+"""
 import xlrd
 import os
 
@@ -51,7 +55,7 @@ class PrimaryCareTrusts(WritableObject):
         for t in self._trusts:
             r = list()
             for h in headers:
-                r.append(str(getattr(t, h, "")))
+                r.append('"{}"'.format(getattr(t, h, "")))
             result.append(','.join(r))
         return os.linesep.join(result)
 
@@ -111,7 +115,7 @@ class Surgeries(WritableObject):
         for s in self._surgeries.itervalues():
             r = list()
             for h in headers:
-                r.append(str(s.get(h, "")))
+                r.append('"{}"'.format(s.get(h, "")))
             result.append(','.join(r))
         return os.linesep.join(result)
 
